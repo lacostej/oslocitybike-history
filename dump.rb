@@ -23,7 +23,7 @@ def dump_availability(token: nil)
 	if File.exist? output
 		puts "File #{output} already exists"
 	else
-		puts "Saving #{output}"
+		puts "-> Saving #{output}"
 		File.write(output, body)
 	end
 	next_update = updated_at + refresh_rate.ceil
@@ -38,7 +38,9 @@ while true
   puts "now: #{now.to_i} next_update: #{next_update.to_i}"
   break if next_update.to_i > max.to_i
   sleep_time = next_update - Time.now
-  sleep(sleep_time) unless sleep_time < 0
+# sometimes oslobysykkel refresh_rate isn't respected, let's try to not hammer their servers too much
+  sleep_time = 1 if sleep_time < 0
+  sleep(sleep_time)
   now = Time.now
 end
 
