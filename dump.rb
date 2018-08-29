@@ -2,6 +2,8 @@ require_relative 'utils.rb'
 require 'json'
 require 'time'
 
+STDOUT.sync = true
+
 def fetch_url(path, token: nil)
 	token ||= ENV["BYSYKKEL_TOKEN"]
 	raise "missing token" unless token
