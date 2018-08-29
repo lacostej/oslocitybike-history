@@ -33,8 +33,11 @@ max = now + 60
 
 while true
   next_update = dump_availability + 1
+  puts "now: #{now.to_i} next_update: #{next_update.to_i}"
   break if next_update.to_i > max.to_i
   sleep_time = next_update - Time.now
   sleep(sleep_time) unless sleep_time < 0
   now = Time.now
 end
+
+puts "Ending..."
