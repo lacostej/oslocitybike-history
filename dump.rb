@@ -1,5 +1,5 @@
 require_relative 'utils.rb'
-require 'JSON'
+require 'json'
 require 'time'
 
 def fetch_url(path, token: nil)
