@@ -16,6 +16,7 @@ def dump_availability(token: nil)
 
 	updated_at = Time.parse(json['updated_at'])
 	refresh_rate = json['refresh_rate'].to_f
+	Dir.mkdir 'data' unless Dir.exist? 'data'
 	output = "data/availability_#{updated_at.to_i}.json"
 	if File.exist? output
 		puts "File #{output} already exists"
